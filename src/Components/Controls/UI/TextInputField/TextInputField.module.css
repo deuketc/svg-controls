@@ -1,0 +1,41 @@
+.TextInputContainer {
+    position: relative;
+}
+
+.TextInputContainer:after {
+    content:'';
+    position: absolute;
+    height: 2px;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    background-color: #9f9f9f;
+    z-index: 4;
+    display: block;
+}
+
+.TextInputLabel {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+    width: 100%;
+    color: #9f9f9f;
+    pointer-events: none;
+    z-index: 3;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+
+.TextInput { 
+    width: 100%;
+    border: 0; 
+    padding: 30px 0;
+    z-index: 2;
+    background: none;
+    font-size: 30px;
+    color: #2195f3;
+    font-family: 'Roboto', sans-serif;
+}
+

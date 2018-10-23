@@ -1,0 +1,16 @@
+.inputRow {
+    position: relative;
+}
+
+.IconCol {
+    position: absolute; top: 0; left: 0;
+    height: 100%;
+    width: 100px;
+    padding-top:17px;
+    box-sizing: border-box;
+}
+
+.FieldCol {
+    padding-left: 100px;
+    box-sizing: border-box;
+}
