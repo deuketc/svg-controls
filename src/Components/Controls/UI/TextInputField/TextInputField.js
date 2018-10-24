@@ -1,11 +1,15 @@
 import React from 'react'
 import styles from './TextInputField.module.css'
 
-function TextInputField(props) {
+const TextInputField = (props) => {
   return (
     <div className={styles.TextInputContainer}>  
-        <label className={styles.TextInputLabel}>{props.inputvalue}</label>
-        <input className={styles.TextInput} type="text" name="test" />
+        <label className={styles.TextInputLabel}>{props.TextInput}</label>
+        <input 
+          className={styles.TextInput} 
+          onFocus={props.focus} 
+          onBlur={props.blur}
+          type="text" name="test" />
     </div>
   )
 }
