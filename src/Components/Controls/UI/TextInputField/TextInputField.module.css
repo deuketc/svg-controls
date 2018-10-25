@@ -25,8 +25,26 @@
     z-index: 3;
     font-size: 30px;
     line-height: 30px;
+    transition: .25s ease-out;
+    transform-origin: left;
 }
 
+.TextInputLabelFocused {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+    width: 100%;
+    color: #9f9f9f;
+    pointer-events: none;
+    z-index: 3;
+    font-size: 30px;
+    line-height: 30px;
+    transition: .25s ease-out;
+
+    transform: scale(.7) translate(0px, -50px);
+    transform-origin: left;
+}
 
 .TextInput { 
     width: 100%;
@@ -39,3 +57,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
+
+.TextInput:focus {
+    outline: none;
+}

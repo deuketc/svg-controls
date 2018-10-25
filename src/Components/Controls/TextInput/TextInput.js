@@ -8,7 +8,10 @@ class TextInput extends Component {
 
     constructor() {
         super();
-        this.state = { inputAction : "default" }
+        this.state = { 
+            inputStateFocus : false,
+            inputContainsText : false 
+        }
     }
   
     componentDidMount() {
@@ -17,13 +20,13 @@ class TextInput extends Component {
 
   inputFocusHandler(){
       this.setState({
-        inputAction : "Input Focus"
+        inputStateFocus : true
       })
   }
 
   inputBlurHandler(){
     this.setState({
-      inputAction : "default"
+        inputStateFocus : false
     })
 } 
 
@@ -39,10 +42,12 @@ class TextInput extends Component {
                 <Textinputfield 
                     focus={this.inputFocusHandler.bind(this)}
                     blur={this.inputBlurHandler.bind(this)} 
-                    TextInput={this.props.inputvalue} />
+                    TextInput={this.props.inputvalue} 
+                    focusActive={this.state.inputStateFocus}
+                    />
             </div>
         </div>
-        <Debug CurrentAction={this.state.inputAction} />
+        <Debug CurrentAction={this.state.inputStateFocus} />
         </>
     )
   }
