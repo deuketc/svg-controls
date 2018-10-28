@@ -6,7 +6,7 @@
     position: absolute; top: 0; left: 0;
     height: 100%;
     width: 100px;
-    padding-top:17px;
+    margin-top:17px;
     box-sizing: border-box;
 }
 

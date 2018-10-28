@@ -17,3 +17,23 @@
     width: 60px;
     display: block;
 }
+
+
+.Loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 50%;
+}
+
+.Loader circle {
+    stroke-dasharray: 176;
+}
+
+.Tick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    stroke-dasharray: 50px;
+    stroke-dashoffset: 50px;
+}
