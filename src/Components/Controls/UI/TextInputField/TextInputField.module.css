@@ -1,9 +1,10 @@
 .TextInputContainer {
     position: relative;
+    margin-bottom: 100px;
 }
 
-.TextInputContainer:after {
-    content:'';
+
+.InputStroke {
     position: absolute;
     height: 2px;
     left:0;

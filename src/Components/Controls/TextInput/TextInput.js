@@ -10,7 +10,8 @@ class TextInput extends Component {
         super();
         this.state = { 
             inputStateFocus : false,
-            inputContainsText : false 
+            inputHasEmail : false,
+            inputHasValidated : false
         }
     }
   
@@ -22,12 +23,39 @@ class TextInput extends Component {
       this.setState({
         inputStateFocus : true
       })
+      this.inputField.animateStokeOnFocusHandler();
   }
 
-  inputBlurHandler(){
-    this.setState({
-        inputStateFocus : false
-    })
+  inputChangeHandler(event){
+
+    if (this.state.inputHasValidated==true) {
+        this.inputIcon.resetLoadingAnimation();
+        this.setState({
+            inputHasValidated : false
+        })
+    }
+
+  }
+
+
+
+  inputBlurHandler(event){
+   
+    if(event.target.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+        this.setState({inputHasEmail:true, inputHasValidated:true});
+        this.inputIcon.playLoadingAnimation();
+    }else{
+        this.setState({inputHasEmail:false});
+        console.log(event.target.value);
+    }
+
+    if (event.target.value === "") {
+        this.setState({
+            inputStateFocus : false
+        })
+    }
+
+    this.inputField.resetStokeOnFocusHandler();
 } 
 
 
@@ -36,18 +64,22 @@ class TextInput extends Component {
         <>
         <div className={styles.inputRow}>
             <div className={styles.IconCol}>
-                <Textinputicon IconIndex={this.props.inputtabindex} />
+                <Textinputicon ref={instance => { this.inputIcon = instance; }} IconIndex={this.props.inputtabindex} playLoadingAnimation={this.state.inputHasEmail} />
             </div>
             <div className={styles.FieldCol}>
                 <Textinputfield 
+                    ref={instance => { this.inputField = instance; }} 
                     focus={this.inputFocusHandler.bind(this)}
                     blur={this.inputBlurHandler.bind(this)} 
                     TextInput={this.props.inputvalue} 
                     focusActive={this.state.inputStateFocus}
+                    change={this.inputChangeHandler.bind(this)}
                     />
             </div>
         </div>
-        <Debug CurrentAction={this.state.inputStateFocus} />
+        <Debug label={"Focused"} CurrentAction={this.state.inputStateFocus} />
+        <Debug label={"Email Confirmed"} CurrentAction={this.state.inputHasEmail} />
+        <Debug label={"Has Validated"} CurrentAction={this.state.inputHasValidated} />
         </>
     )
   }
